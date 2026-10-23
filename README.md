@@ -320,29 +320,6 @@ PHP's RFC1867 upload-progress handler (`rfc1867_callback`) reads and deserialise
 
 ---
 
-## Docker Test Environment
-
-```bash
-docker run -d --name php-lab \
-  -p 8080:80 \
-  php:8.4.26-apache
-
-docker exec php-lab bash -c "
-  echo 'session.upload_progress.enabled=1' >> /usr/local/etc/php/php.ini
-  echo 'session.upload_progress.cleanup=0'  >> /usr/local/etc/php/php.ini
-  chmod 777 /var/lib/php/sessions
-"
-
-docker cp session_inject.php  php-lab:/var/www/html/
-docker cp check_sentinel.php  php-lab:/var/www/html/
-docker cp upload.php          php-lab:/var/www/html/
-docker cp view.php            php-lab:/var/www/html/
-docker cp debug.php           php-lab:/var/www/html/
-docker cp oom_trigger.php     php-lab:/var/www/html/
-```
-
----
-
 ## Requirements
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-3776AB?style=flat-square&logo=python&logoColor=white)
